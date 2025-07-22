@@ -21,9 +21,9 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center">
-      <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">Church Content Manager</h1>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-100 flex flex-col justify-center items-center p-4">
+      <div className="max-w-md w-full bg-white/90 backdrop-blur p-8 rounded-xl shadow-lg">
+        <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6">Church Content Manager</h1>
         <p className="text-center text-gray-600 mb-6">Sign in via magic link with your email below</p>
         <form onSubmit={handleLogin}>
           <div>
@@ -40,7 +40,7 @@ function Login() {
           </div>
           <div className="mt-6">
             <button
-              className={`w-full py-2 px-4 text-white font-semibold rounded-md ${loading ? 'bg-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+              className={`w-full py-2 px-4 text-white font-medium rounded-md ${loading ? 'bg-indigo-400' : 'bg-indigo-600 hover:bg-indigo-700'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition`}
               disabled={loading}
             >
               {loading ? <span>Loading...</span> : <span>Send magic link</span>}
