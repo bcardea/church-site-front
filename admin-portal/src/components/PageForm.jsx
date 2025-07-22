@@ -13,10 +13,18 @@ function PageForm({ item, onSave, onCancel }) {
   });
 
   useEffect(() => {
-        if (item) {
+    if (item) {
+      let blocks = item.content_blocks || [];
+      if (typeof blocks === 'string') {
+        try {
+          blocks = JSON.parse(blocks);
+        } catch (err) {
+          blocks = [];
+        }
+      }
       setFormData({
         ...item,
-        content_blocks: item.content_blocks || [], // Ensure content_blocks is an array
+        content_blocks: blocks, // Ensure content_blocks is an array
       });
     }
   }, [item]);
