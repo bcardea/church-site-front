@@ -8,7 +8,7 @@ function Modal({ isOpen, onClose, title, children }) {
           <h3 className="text-xl font-semibold">{title}</h3>
           <button onClick={onClose} className="text-gray-500 hover:text-gray-800">&times;</button>
         </div>
-        <div className="p-6 overflow-y-auto">{children}</div>
+        <div className="p-6 overflow-y-auto flex-1">{children}</div>
       </div>
     </div>
   );
