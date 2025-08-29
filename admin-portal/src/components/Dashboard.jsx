@@ -3,6 +3,7 @@ import { supabase } from '../supabaseClient';
 import HeroContentManager from './HeroContentManager';
 import ConnectionCardsManager from './ConnectionCardsManager';
 import PagesManager from './PagesManager';
+import EmailAllowlistManager from './EmailAllowlistManager';
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('hero');
@@ -19,6 +20,8 @@ function Dashboard() {
         return <ConnectionCardsManager />;
       case 'pages':
         return <PagesManager />;
+      case 'emails':
+        return <EmailAllowlistManager />;
       default:
         return <HeroContentManager />;
     }
@@ -34,6 +37,7 @@ function Dashboard() {
               <button onClick={() => setActiveTab('hero')} className={`px-3 py-2 rounded-md text-sm font-medium transition ${activeTab === 'hero' ? 'bg-white/20 text-white' : 'text-white hover:bg-white/10'}`}>Hero</button>
               <button onClick={() => setActiveTab('cards')} className={`px-3 py-2 rounded-md text-sm font-medium transition ${activeTab === 'cards' ? 'bg-white/20 text-white' : 'text-white hover:bg-white/10'}`}>Cards</button>
               <button onClick={() => setActiveTab('pages')} className={`px-3 py-2 rounded-md text-sm font-medium transition ${activeTab === 'pages' ? 'bg-white/20 text-white' : 'text-white hover:bg-white/10'}`}>Pages</button>
+              <button onClick={() => setActiveTab('emails')} className={`px-3 py-2 rounded-md text-sm font-medium transition ${activeTab === 'emails' ? 'bg-white/20 text-white' : 'text-white hover:bg-white/10'}`}>Email Access</button>
             </nav>
             <button
               onClick={handleLogout}

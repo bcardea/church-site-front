@@ -10,8 +10,23 @@ function Login() {
 
     try {
       setLoading(true);
+      
+      // First check if email is in the allowlist
+      const { data: emailCheck, error: checkError } = await supabase
+        .rpc('is_email_allowed', { check_email: email });
+        
+      if (checkError) {
+        throw new Error('Unable to verify email permissions');
+      }
+      
+      if (!emailCheck) {
+        throw new Error('This email address is not authorized to access the admin portal. Please contact your administrator.');
+      }
+
+      // If email is allowed, proceed with magic link
       const { error } = await supabase.auth.signInWithOtp({ email });
       if (error) throw error;
+      
       alert('Check your email for the login link!');
     } catch (error) {
       alert(error.error_description || error.message);

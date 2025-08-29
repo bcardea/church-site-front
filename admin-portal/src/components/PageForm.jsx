@@ -8,11 +8,14 @@ function PageForm({ item, onSave, onCancel }) {
   const [formData, setFormData] = useState({
     title: '',
     slug: '',
+    subtitle: '',
     description: '',
     image_url: '',
     template: 'TemplateA',
+    cta_button_text: '',
+    cta_button_link: '',
+    accent_color: '#000000',
     content_blocks: [],
-    // Add other page fields here
   });
   const [uploading, setUploading] = useState(false);
 
@@ -29,9 +32,13 @@ function PageForm({ item, onSave, onCancel }) {
       setFormData({
         title: item.title || '',
         slug: item.slug || '',
+        subtitle: item.subtitle || '',
         description: item.description || '',
         image_url: item.image_url || '',
         template: item.template || 'TemplateA',
+        cta_button_text: item.cta_button_text || '',
+        cta_button_link: item.cta_button_link || '',
+        accent_color: item.accent_color || '#000000',
         content_blocks: blocks, // Ensure content_blocks is an array
       });
     }
@@ -82,6 +89,10 @@ function PageForm({ item, onSave, onCancel }) {
           <input type="text" name="slug" value={formData.slug} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" required />
         </div>
         <div>
+          <label className="block text-sm font-medium text-gray-700">Subtitle</label>
+          <input type="text" name="subtitle" value={formData.subtitle} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
+        </div>
+        <div>
           <label className="block text-sm font-medium text-gray-700">Image</label>
           <input
             type="file"
@@ -111,6 +122,20 @@ function PageForm({ item, onSave, onCancel }) {
             <option value="TemplateB">TemplateB</option>
             <option value="TemplateC">TemplateC</option>
           </select>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">CTA Button Text</label>
+            <input type="text" name="cta_button_text" value={formData.cta_button_text} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">CTA Button Link</label>
+            <input type="text" name="cta_button_link" value={formData.cta_button_link} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
+          </div>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Accent Color</label>
+          <input type="color" name="accent_color" value={formData.accent_color} onChange={handleChange} className="mt-1 block w-full h-10 px-1 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700">Description</label>
